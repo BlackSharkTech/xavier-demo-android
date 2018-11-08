@@ -61,7 +61,7 @@ The image taken of the travel document (the image within the bounds of the bound
 
 Type: `HashMap<XavierField, String>` (serializable extra). 
 
-A map of all parsed MRZ fields. See [Result Data Breakdown](https://gitlab.com/blackshark-developers/xavier-demo-android/blob/master/documentation/result_data_breakdown.md) for a list of all available fields. 
+A map of all parsed MRZ fields. See [Result Data Breakdown](https://github.com/BlackSharkTech/xavier-demo-android/blob/master/documentation/result_data_breakdown.md) for a list of all available fields. 
 
 #### `XavierActivity.ERROR`
 
