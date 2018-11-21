@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Xavier Demo</string>
+    <string name="given_name">Given Name:</string>
+    <string name="surname">Surname:</string>
+    <string name="doc_type">Document Type:</string>
+    <string name="subType">Sub Type:</string>
+    <string name="issuing_state">Issuing Country:</string>
+    <string name="doc_number">Document Number:</string>
+    <string name="nationality">Nationality:</string>
+    <string name="gender">Gender:</string>
+    <string name="expiration">Expiration Date:</string>
+    <string name="personal_number">Personal Number:</string>
+    <string name="optional">Optional Data:</string>
+    <string name="birthdate">Birth Date:</string>
+    <string name="rawMrz">Raw MRZ:</string>
+
+    <string name="how_to">Tips &amp; Tricks</string>
+    <string name="contact">Contact</string>
+
+    <!--Contact information-->
+    <string name="toBuy"><b>To Buy</b></string>
+    <string name="moreInfo"><b>More Info</b></string>
+    <string name="rateUs"><b>Rate Us!</b></string>
+    <string name="clickRate">Click Here to Rate</string>
+    <string name="email">Interested in having Xavier in your app? Email us at info@blacksharktech.com for pricing and license inquiries</string>
+    <string name="website">Visit our website at <a href="http://www.blacksharktech.com">blacksharktech.com</a></string>
+    <string name="disclaimer">Disclaimer: We do not send your data anywhere</string>
+    <string name="rate">Enjoying our app? Rate us on the Google Play store!</string>
+
+    <string name="scanningProblems"><b><u>Having trouble scanning?</u></b></string>
+    <string name="mrzLocation">&#8226; Make sure the MRZ is within the frame. The MRZ is on the bottom of Passports and Visas, and on the back of cards such as the
+        Enhanced Driver\'s License or a U.S Permanent Resident Card.</string>
+    <string name="documentCentered">&#8226; Make sure the document is centered within the bounds of the box</string>
+    <string name="reduceGlare">&#8226; Reduce glare on your document by angling the document or blocking the offending light source</string>
+    <string name="dimLighting">&#8226; In dim lighting, enable the flashlight using the icon in the top right of the scanner screen</string>
+    <string name="moveDocument">&#8226; Move your document slowly in and out</string>
+    <string name="landscapeMode">&#8226; Try landscape mode</string>
+    <string name="moveHand">&#8226; Make sure your hand doesn\'t cover text on the document</string>
+</resources>
