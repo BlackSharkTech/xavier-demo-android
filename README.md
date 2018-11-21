@@ -19,4 +19,4 @@ For **iOS** developers, see the [Xavier Demo iOS app](https://github.com/BlackSh
 
 | Version | Download | Date |
 |---------|----------|------|
-| v1.0 | [xavierlib.aar](https://gitlab.com/blackshark-developers/xavier-demo-android/blob/master/xavier-demo/app/libs/xavierlib.aar) | 2018/11/07 |
+| v1.0 | [xavierlib.aar](https://github.com/BlackSharkTech/xavier-demo-android/blob/master/xavier-demo/app/libs/xavierlib.aar) | 2018/11/07 |
