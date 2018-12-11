@@ -20,3 +20,15 @@ For **iOS** developers, see the [Xavier Demo iOS app](https://github.com/BlackSh
 | Version | Download | Date |
 |---------|----------|------|
 | v2.0 | [xavierlib.aar](https://github.com/BlackSharkTech/xavier-demo-android/blob/master/xavier-demo/app/libs/xavierlib.aar) | 2018/11/07 |
+
+#### Dependencies
+> See [app/build.gradle](https://github.com/BlackSharkTech/xavier-demo-android/blob/master/xavier-demo/app/build.gradle) for more information.
+
+The current version of the Xavier framework uses the following external, open source dependencies:
+
+| Dependency | Version |
+|------------|---------|
+| [Tess-two](https://github.com/rmtheis/tess-two) | v9.0.0 |
+| [GPUImage](https://github.com/cats-oss/android-gpuimage) | v1.3.0 |
+| [OkHttp](https://github.com/square/okhttp)   | v3.11.0|
+| [Gson](https://github.com/google/gson)     | v2.8.5 |
