@@ -96,7 +96,9 @@ The check digit over the document number, birth datem expiration date, optional 
 
 ## Debug Build Console Message
 
-Xavier provide the information of the scanned MRZ on a per-field basis in the debug version of the SDK. The information is printed out onto the console as a regular string. The main purpose for this data is to provide the developers, who will be using the SDK, with detailed information on the scanned MRZ (valid or invalid). The data will include the scanned MRZ lines in their raw forms, the name of the fields and their values (raw and corrected).
+Xavier provide the information of the scanned MRZ on a per-field basis. The information is printed out onto the console as a regular string. The main purpose for this data is to provide the developers, who will be using the SDK, with detailed information on the scanned MRZ (valid or invalid). 
+
+The data will include the scanned MRZ lines in their raw forms, the name of the fields from the list of `XavierField` noted above and their values (raw and corrected).
 
 Below is an example of how the information will look like in the console:
 
@@ -123,4 +125,17 @@ ParsedField name="DOCUMENT_SUBTYPE"  value="B"  correctedValue="B"
 ParsedField name="DOCUMENT_NUMBER"  value="99310025<"  correctedValue="99310025<"
 ParsedField name="DATE_BIRTH_CHECK_DIGIT"  value="9"  correctedValue="9"
 ============================
+```
+
+Additional data related to the scan will also be printed out. These additional information will only be printed out when a valid MRZ is scanned:
+
+* Time spent scanning: The time the scanner spent actively searching for MRZ (in ms).
+* Number of candidates: The number of MRZ found. This is for both valid and invalid MRZ.
+* Number of scans: The number of scans Xavier took until the valid MRZ.
+
+```
+I/Xavier: Ended scanner at Wed Sep 25 15:23:17 EDT 2019
+    Time spent scanning: 7270 ms
+    Number of candidates: 1
+    Number of scans: 14
 ```
