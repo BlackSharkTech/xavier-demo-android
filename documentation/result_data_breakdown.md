@@ -94,7 +94,7 @@ The check digit for the optional data
 
 The check digit over the document number, birth datem expiration date, optional data, and their check digits
 
-## Debug Build Console Message
+## Console Message
 
 Xavier provide the information of the scanned MRZ on a per-field basis. The information is printed out onto the console as a regular string. The main purpose for this data is to provide the developers, who will be using the SDK, with detailed information on the scanned MRZ (valid or invalid). 
 
