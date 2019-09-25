@@ -67,16 +67,22 @@ A map of all parsed MRZ fields. See [Result Data Breakdown](https://github.com/B
 
 Type: XavierError (enum/serializable extra)
 
-This enum covers known errors states (exceptions or invalid data). These are its values:
- - UNKNOWN: This is our generic/default error, which comes from truly unexpected behavior. None of these should reach the user.
- - LICENSE_INVALID: This happens when the app's license is invalid. Sometimes this is because of some issue with an internet connection, but if it happens with any regularity it's likely on your end.
- - PERMISSIONS: This happens when the user hasn't accepted the required permissions. The next time they attempt to use the app, they'll be asked again.
- - PACKAGE_NAME_NOT_FOUND: Happens when the package's name isn't found. Again, none of these should reach the user. If you're seeing this error, something is wrong with how you're building your app.
- - CAMERA_ORIENTATION: This error occurs whenever the user rapidly changes the camera from portrait to landscape and vice versa. While in production we recommend (silently) relaunching the activity whenever this happens, in testing this will tell you if your usage or application is changing orientation at unsafe speeds.
- - CAMERA_GENERIC: The following errors all come from an inability to access the device camera.
- - CAMERA_DISABLED: The device has (somehow) disabled the camera. We don't know how, but it's almost certainly under the user's control. We recommend giving them some sort of feedback (toast, dialog, etc) so that they can fix it.
- - CAMERA_DISCONNECTED: Rare, but also likely the user's fault. Either their device is broken or they've disconnected an external camera while using the app. Please tell them not to do that.
- - CAMERA_IN_USE: In this case, the camera is currently being used by another app and the device doesn't support it. Not much you can do about this other than tell the user to stop split-screening your app with another camera-using application (or however else this happens).
- - CAMERA_MAX_IN_USE: Some devices have a limit on how many usages of the camera are allowed at a time. This error is for letting the user know that they've hit that limit.
+This enum covers known error states (exceptions or invalid data).
+ - UNKNOWN: This is our generic/default error. See the developer console for more information.
+ - LICENSE_INVALID: This happens when the app's license is invalid. One of a few things could cause this:
+    - Your license key is misspelled
+    - Your license has expired
+    - Your license's status has not been verified and you aren't connected to the internet
+ - PERMISSIONS: This happens when the user hasn't accepted the required permissions. The next time they attempt to use the app, they'll be asked again. The android dialog makes this clear.
+ - PACKAGE_NAME_NOT_FOUND: This occurs when the package's name isn't found. This should never reach the user. It's caused by an error in the package build process.
+ - CAMERA_ORIENTATION: This error occurs whenever the user rapidly changes the camera from portrait to landscape and vice versa. While in production we recommend (silently) relaunching the XavierActivity whenever this happens. In testing, this will tell you if your device is changing orientation at unsafe speeds. If you see this error and that's not happening, there is a problem with your software or the hardware that determines your device's orientation.
 
-In our demo app, we've supplied messages for most of these errors and put them in a toast whenever they occur. We recommend that you not always display messages related to these errors in production. Some (especially those related to the camera) will need fixes performed by the user, but others exist strictly to inform your development team.
+The following errors all come from an inability to access the device camera. These are useful to your users, so you need to display a message to match them.
+ 
+ - CAMERA_DISABLED: The device has disabled the camera. While the error can't provide specifics, it's almost certainly under the user's control.
+ - CAMERA_DISCONNECTED: If your device's camera hardware is broken or (in the case of external cameras) disconnected, Xavier will report this error.
+ - CAMERA_IN_USE: In this case, the camera is currently being used by another app and the device does not support this.
+ - CAMERA_MAX_IN_USE: Some devices have a limit on how many camera instances are allowed at a time. This error is for letting the user know that they've hit that limit.
+ - CAMERA_GENERIC: This error happens when the camera is "in the error state," but the device isn't able to determine which of the above states best describes the situation. Like the above, though, it's generally a hardware-related issue.
+
+In our demo app, we've supplied messages for most of these errors and put them in a toast whenever they occur. While the first section's messages aren't intended to reach the user, you will inevitably encounter some of them. We recommend using these toasts or similar dialogs for all errors, at least in development mode.
