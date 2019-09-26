@@ -22,7 +22,7 @@ allprojects {
         ...
         
         // Xavier library
-        implementation(name:'xavierlib', ext:'aar')
+        implementation(name:'xavierlib-2.0.1-release', ext:'aar')
 
         // Xavier dependencies
         implementation 'com.rmtheis:tess-two:9.0.0'
@@ -30,4 +30,15 @@ allprojects {
         implementation 'com.squareup.okhttp3:okhttp:3.11.0'
         implementation 'com.google.code.gson:gson:2.8.5'
     }
+```
+
+You can switch between different version of the library by changing the name's value in the dependencies implementation line for "Xavier library". Below is an example on how to change to the debug version of the library.
+
+```gradle
+    dependencies {
+        ...
+        
+        // Xavier library
+        implementation(name:'xavierlib-2.0.1-debug', ext:'aar')
+        ...
 ```

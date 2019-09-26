@@ -33,7 +33,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     // Xavier
-    implementation(name:'xavierlib', ext:'aar')
+    implementation(name:'xavierlib-2.0.1-release', ext:'aar')
 
     // Xavier dependencies
     implementation 'com.rmtheis:tess-two:9.0.0'
