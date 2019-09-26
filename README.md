@@ -1,4 +1,4 @@
-# Xavier 2.0 Demo Application - Android
+# Xavier 2.0.1 Demo Application - Android
 This is the repository for the Xavier Demo app for Android. You can use the code here as an example for implementing the Xavier Framework into your own app.
 See the documentation links below for more information.
 
