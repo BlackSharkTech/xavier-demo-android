@@ -1,4 +1,4 @@
-# Adding Xavier to your App
+# Adding the Xavier Library to your Application
 
 1. Create a directory `libs` inside your project's `app` folder
 2. Download the [library AAR file](../downloads/v2.0/xavierlib.aar)
