@@ -53,7 +53,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 ## Further Exploration
 
-Take a look at our [demo application](../xavier-demo).   You can see a more developed version of the code above in [MainActivity.java](../xavier-demo/app/src/main/java/com/blacksharktech/xavier/MainActivity.java).
+The above example is a very simple example to get you up and running.  Take a look at our [demo application](../xavier-demo) to get a sense of a more complete implementation.   You can see a more developed version of the code above in [MainActivity.java](../xavier-demo/app/src/main/java/com/blacksharktech/xavier/MainActivity.java).
 
 
 ## Intent Extras
