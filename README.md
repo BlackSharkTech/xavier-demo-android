@@ -6,23 +6,23 @@ For **iOS** developers, see the [Xavier Demo iOS app](https://github.com/BlackSh
 
 #### Documentation
 
-[Adding Xavier to your Project](https://github.com/BlackSharkTech/xavier-demo-android/blob/master/documentation/adding_xavier_to_your_app.md)
+[Adding Xavier to your Project](./documentation/adding_xavier_to_your_app.md)
 
-[How to use Xavier](https://github.com/BlackSharkTech/xavier-demo-android/blob/master/documentation/how_to_use_xavier.md)
+[How to use Xavier](./documentation/how_to_use_xavier.md)
 
-[Customizing Xavier](https://github.com/BlackSharkTech/xavier-demo-android/blob/master/documentation/customization.md)
+[Customizing Xavier](./documentation/customization.md)
 
-[MRZ Result Breakdown](https://github.com/BlackSharkTech/xavier-demo-android/blob/master/documentation/result_data_breakdown.md)
+[MRZ Result Breakdown](./documentation/result_data_breakdown.md)
 
 #### Downloads
 > The deployment supports **Android 5.0+**.
 
 | Version | Download | Date |
 |---------|----------|------|
-| v2.0 | [xavierlib.aar](https://github.com/BlackSharkTech/xavier-demo-android/blob/master/xavier-demo/app/libs/xavierlib.aar) | 2018/11/07 |
+| v2.0 | [xavierlib.aar](./downloads/v2.0/xavierlib.aar) | 2018/11/07 |
 
 #### Dependencies
-> See [app/build.gradle](https://github.com/BlackSharkTech/xavier-demo-android/blob/master/xavier-demo/app/build.gradle) for more information.
+> See [app/build.gradle](./xavier-demo/app/build.gradle) for more information.
 
 The current version of the Xavier framework uses the following external, open source dependencies:
 

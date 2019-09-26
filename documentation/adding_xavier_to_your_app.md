@@ -1,7 +1,7 @@
 # Adding Xavier to your App
 
 1. Create a directory `libs` inside your project's `app` folder
-2. Download the [library AAR file](https://github.com/BlackSharkTech/xavier-demo-android/blob/master/xavier-demo/app/libs/xavierlib.aar)
+2. Download the [library AAR file](../downloads/v2.0/xavierlib.aar)
 3. Put the AAR file into the `libs` directory you just created
 4. In your `build.gradle` at the root of your project, add the following:
 
