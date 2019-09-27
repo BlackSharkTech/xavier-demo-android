@@ -1,4 +1,4 @@
-# Xavier 2.0 Demo Application - Android
+# Xavier 2.0.1 Demo Application - Android
 This is the repository for the Xavier Demo app for Android. You can use the code here as an example for implementing the Xavier Framework into your own app.
 See the documentation links below for more information.
 
@@ -6,13 +6,9 @@ For **iOS** developers, see the [Xavier Demo iOS app](https://github.com/BlackSh
 
 #### Documentation
 
-[Adding Xavier to your Project](./documentation/adding_xavier_to_your_app.md)
-
-[How to use Xavier](./documentation/how_to_use_xavier.md)
-
-[Customizing Xavier](./documentation/customization.md)
-
-[MRZ Result Breakdown](./documentation/result_data_breakdown.md)
+1. [Adding the Xavier Library to your Project](./documentation/adding-xavier.md)
+1. [Using Xavier](./documentation/using-xavier.md)
+1. [Customizing Xavier](./documentation/customization.md)
 
 #### Downloads
 > The deployment supports **Android 5.0+**.
