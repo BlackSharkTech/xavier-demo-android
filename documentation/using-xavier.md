@@ -24,32 +24,31 @@ The following is an example of handling results from Xavier:
 ```java
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    if (requestCode == 1){  // this value must match the value you used in `startActivityForResult()`
-
+    // This value must match the value you used in `startActivityForResult()`
+    if (requestCode == XAVIER_RESULT){
         // Xavier completed successfully
-        if (resultCode == RESULT_OK) {
-            
-            // List of all parsed MRZ fields
-            HashMap<XavierField, String> mrzFields = (HashMap<XavierField, String>) data.getSerializableExtra(XavierActivity.DOCUMENT_INFO);
-            
-            // document photo (converted to bitmap)
-            byte[] bytes = data.getByteArrayExtra(XavierActivity.DOCUMENT_IMAGE);
-            Bitmap bitmap = PhotoUtil.convertByteArrayToBitmap(bytes);
-            
-        // User cancelled or an error occurred
-        } else if(resultCode == RESULT_CANCELED){       
-           
-            // In this example, we show the error in a toast, if one occurred
+        if(resultCode == RESULT_OK) {
+
+            Intent intent = new Intent(this, ResultsActivity.class);
+            intent.putExtra(XavierActivity.DOCUMENT_INFO, data.getSerializableExtra(XavierActivity.DOCUMENT_INFO));
+            intent.putExtra(XavierActivity.DOCUMENT_IMAGE, data.getByteArrayExtra(XavierActivity.DOCUMENT_IMAGE));
+            startActivity(intent);
+
+        // User canceled or an error occurred
+        } else if(resultCode == RESULT_CANCELED){
             if(data != null) {
-                String error = data.getStringExtra("ERROR");
+                XavierError error = (XavierError) data.getSerializableExtra(XavierActivity.ERROR);
+                // Show the error message in a toast
                 if (error != null) {
-                    Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getErrorMessage(error), Toast.LENGTH_SHORT).show();
                 }
             }
         }
     }
 }
 ```
+
+*Note: see [`getErrorMessage`](#getErrorMessage(xaviererror-error)) below for more info. 
 
 ## Understanding the Result Information
 
@@ -145,13 +144,44 @@ The following errors are caused by a problem accessing the devices camera. These
 | CAMERA_MAX_IN_USE | Some devices have a limit on how many camera instances are allowed at a time. This error is for letting the user know that they've hit that limit. |
 | CAMERA_GENERIC | This error happens when the camera is "in the error state," but the device isn't able to determine which of the above states best describes the situation. Like the above, though, it's generally a hardware-related issue. |
 
-## Console Message
+## getErrorMessage(XavierError error)
+
+When the XavierActivity finishes and sends an error code, our demo app handles it by toasting a corresponding string. See [Receiving Results](#receiving-results) for context.
+```java
+private String getErrorMessage(XavierError error) {
+    switch (error) {
+        case CAMERA_DISABLED:
+            return getString(R.string.camErrorDisabled); // Camera error: camera is disabled by device.
+        case CAMERA_DISCONNECTED:
+            return getString(R.string.camErrorDisconnected); // Camera error: camera is disconnected from device.
+        case CAMERA_IN_USE:
+            return getString(R.string.camErrorInUse); // Camera error: camera is already in use.
+        case CAMERA_MAX_IN_USE:
+            return getString(R.string.camErrorMaxInUse); // Camera error: too many camera instances open.
+        case CAMERA_GENERIC:
+            return getString(R.string.camErrorDefault); // Error: check camera status.
+        case CAMERA_ORIENTATION:
+            return getString(R.string.camErrorOrientation); // Too many orientation changes!
+        case LICENSE_INVALID:
+            return getString(R.string.invalidLicense); // This license is not valid for this device.
+        case PERMISSIONS:
+            return getString(R.string.permissionsError); // Permissions not accepted.
+        case PACKAGE_NAME_NOT_FOUND:
+            return getString(R.string.packageNotFound); // Package not found.
+        default:
+            return getString(R.string.defaultError); // Unknown error.
+    }
+}
+```
+You should filter errors and supply your own messages (use R.string.___ for localization reasons) much like in the above example. The strings in our strings.xml file are shown in comments and should **not** be hard-coded into your equivalent method.
+
+### Console Messages
 
 Xavier provide the information of the scanned MRZ on a per-field basis. The information is printed out onto the console as a regular string. The main purpose for this data is to provide the developers, who will be using the SDK, with detailed information on the scanned MRZ (valid or invalid). 
 
 The data will include the scanned MRZ lines in their raw forms, the name of the fields from the list of `XavierField` noted above and their values (raw and corrected).
 
-Below is an example of how the information will look like in the console:
+Below is an example of how the information will look in the console:
 
 ```
 ============================
@@ -178,11 +208,11 @@ ParsedField name="DATE_BIRTH_CHECK_DIGIT"  value="9"  correctedValue="9"
 ============================
 ```
 
-Additional data related to the scan will also be printed out. These additional information will only be printed out when a valid MRZ is scanned:
+Additional data related to the scan will also be printed out. This additional information will only be printed out when a valid MRZ is scanned:
 
 * Time spent scanning: The time the scanner spent actively searching for MRZ (in ms).
-* Number of candidates: The number of MRZ found. This is for both valid and invalid MRZ.
-* Number of scans: The number of scans Xavier took until the valid MRZ.
+* Number of candidates: The number of potential MRZ found. This is for both valid and invalid MRZ.
+* Number of scans: The number of scans Xavier took before finding the valid MRZ.
 
 ```
 I/Xavier: Ended scanner at Wed Sep 25 15:23:17 EDT 2019
@@ -193,5 +223,5 @@ I/Xavier: Ended scanner at Wed Sep 25 15:23:17 EDT 2019
 
 ## Further Exploration
 
-The above example is a very simple example to get you up and running.  Take a look at our [demo application](../xavier-demo) to get a sense of a more complete implementation.   You can see a more developed version of the code above in [MainActivity.java](../xavier-demo/app/src/main/java/com/blacksharktech/xavier/MainActivity.java).
+The above example is a very simple example to get you up and running.  Take a look at our [demo application](../xavier-demo) to get a sense of a more complete implementation.   You can see a more complete version of the code above in [MainActivity.java](../xavier-demo/app/src/main/java/com/blacksharktech/xavier/MainActivity.java).
 
