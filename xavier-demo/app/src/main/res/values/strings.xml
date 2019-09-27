@@ -46,5 +46,5 @@
     <string name="camErrorMaxInUse">Camera error: too many camera instances open.</string>
     <string name="camErrorDefault">Error: check camera status.</string>
     <string name="camErrorOrientation">Too many orientation changes!</string>
-    <string name="packageNotFound">Package not found:</string>
+    <string name="packageNotFound">Package not found.</string>
 </resources>

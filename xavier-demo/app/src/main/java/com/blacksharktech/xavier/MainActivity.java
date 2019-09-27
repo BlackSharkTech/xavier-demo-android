@@ -106,9 +106,10 @@ public class MainActivity extends AppCompatActivity {
             case PERMISSIONS:
                 return getString(R.string.permissionsError);
             case PACKAGE_NAME_NOT_FOUND:
-            case UNKNOWN:
+                return getString(R.string.packageNotFound);
             default:
                 return getString(R.string.defaultError);
-        }
-    }
+      }
+  }
+}
 }
