@@ -1,4 +1,4 @@
-# Xavier 2.0.1 Demo Application - Android
+# Xavier 2.1.0 Demo Application - Android
 This is the repository for the Xavier Demo app for Android. You can use the code here as an example for implementing the Xavier Framework into your own app.
 See the documentation links below for more information.
 
@@ -16,7 +16,7 @@ For **iOS** developers, see the [Xavier Demo iOS app](https://github.com/BlackSh
 | Version | Download | Date |
 |---------|----------|------|
 | v2.0 | [xavierlib.aar](./downloads/v2.0/xavierlib.aar) | 2018/11/07 |
-| v2.0.1 | [xavierlib-2.0.1-release](./downloads/v2.0.1/xavierlib-2.0.1-release.aar) <br> [xavierlib-2.0.1-debug](./downloads/v2.0.1/xavierlib-2.0.1-debug.aar) | 2019/09/26|
+| v2.1.0 | [xavierlib-2.1.0-release](./downloads/v2.1.0/xavierlib-2.0.1-release.aar) | 2019/09/27|
 
 #### Dependencies
 > See [app/build.gradle](./xavier-demo/app/build.gradle) for more information.

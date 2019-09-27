@@ -1,7 +1,7 @@
 # Adding the Xavier Library to your Application
 
 1. Create a directory `libs` inside your project's `app` folder
-2. Download the [library AAR file](../downloads/v2.0/xavierlib.aar)
+2. Download the [library AAR file](../downloads/v2.1.0/xavierlib-2.0.1-release.aar)
 3. Put the AAR file into the `libs` directory you just created
 4. In your `build.gradle` at the root of your project, add the following:
 
@@ -22,7 +22,7 @@ allprojects {
         ...
         
         // Xavier library
-        implementation(name:'xavierlib-2.0.1-release', ext:'aar')
+        implementation(name:'xavierlib-2.1.0-release', ext:'aar')
 
         // Xavier dependencies
         implementation 'com.rmtheis:tess-two:9.0.0'
@@ -32,13 +32,4 @@ allprojects {
     }
 ```
 
-You can switch between different version of the library by changing the name's value in the dependencies implementation line for "Xavier library". Below is an example on how to change to the debug version of the library.
-
-```gradle
-    dependencies {
-        ...
-        
-        // Xavier library
-        implementation(name:'xavierlib-2.0.1-debug', ext:'aar')
-        ...
-```
+You can switch between different versions of the library by changing the name's value in the dependencies implementation line for "Xavier library". Be sure to update this when you download a new version!
