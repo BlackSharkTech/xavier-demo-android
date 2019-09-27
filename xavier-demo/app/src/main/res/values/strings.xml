@@ -36,4 +36,15 @@
     <string name="moveDocument">&#8226; Move your document slowly in and out</string>
     <string name="landscapeMode">&#8226; Try landscape mode</string>
     <string name="moveHand">&#8226; Make sure your hand doesn\'t cover text on the document</string>
+
+    <string name="defaultError">Unknown error.</string>
+    <string name="invalidLicense">This license is not valid for this device.</string>
+    <string name="permissionsError">Permissions not accepted.</string>
+    <string name="camErrorDisabled">Camera error: camera is disabled by device.</string>
+    <string name="camErrorDisconnected">Camera error: camera is disconnected from device.</string>
+    <string name="camErrorInUse">Camera error: camera is already in use.</string>
+    <string name="camErrorMaxInUse">Camera error: too many camera instances open.</string>
+    <string name="camErrorDefault">Error: check camera status.</string>
+    <string name="camErrorOrientation">Too many orientation changes!</string>
+    <string name="packageNotFound">Package not found:</string>
 </resources>
