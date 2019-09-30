@@ -1,7 +1,7 @@
 # Adding the Xavier Library to your Application
 
 1. Create a directory `libs` inside your project's `app` folder
-2. Download the [library AAR file](../downloads/v2.1.0/xavierlib-2.0.1-release.aar)
+2. Download the [library AAR file](../downloads/v2.1.0/xavierlib-2.1.0-release.aar)
 3. Put the AAR file into the `libs` directory you just created
 4. In your `build.gradle` at the root of your project, add the following:
 
