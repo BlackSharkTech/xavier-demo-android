@@ -118,7 +118,7 @@ XavierField enumerates all the possible keys in the result hashmap retrieved fro
 See [ResultsActivity.java](../xavier-demo/app/src/main/java/com/blacksharktech/xavier/ResultsActivity.java) for an in-depth example of handling the result data.
 
 
-### `XavierActivity.ERROR`
+### Enum: `XavierActivity.ERROR`
 
 Type: **XavierError** (enum/serializable extra)
 
