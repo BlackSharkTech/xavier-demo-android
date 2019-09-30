@@ -48,7 +48,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
-*Note: see [`getErrorMessage`](#getErrorMessage(xaviererror-error)) below for more info. 
+*Note: see [`getErrorMessage`](#geterrormessagexaviererror-error) below for more info. 
 
 ## Understanding the Result Information
 
