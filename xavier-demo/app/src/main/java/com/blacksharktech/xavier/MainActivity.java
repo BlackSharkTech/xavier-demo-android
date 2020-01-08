@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(v -> {
             Intent xavierActivity = new Intent(MainActivity.this, XavierActivity.class);
 
-            XavierSDK.getInstance().setAppKey("");
+            XavierSDK.getInstance().setAppKey("$2a$12$NxGfKYhw8TuhXGTLGnvwD.C9RN799n3WgEHlZ2XqTEYwb65zuubLe");
             XavierSDK.getInstance().setCustomization(customization);
 
             startActivityForResult(xavierActivity, XAVIER_RESULT);

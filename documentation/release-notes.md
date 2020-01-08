@@ -5,3 +5,7 @@
 * Allowed error messages to be editable through `strings.xml`.
 * Started printing scanned MRZ on a per field basis to the console for debugging purpose.
 * Made changes to documentation to improve the provided information and readability.
+
+## 2.1.1
+* Fixed a bug with the flash icon where it displays the wrong flash status when the app is resumed from being inactive.
+* Added demo app license key
