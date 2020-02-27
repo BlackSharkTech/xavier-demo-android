@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.blacksharktech.xavierlib.Customization;
 import com.blacksharktech.xavierlib.XavierActivity;
+import com.blacksharktech.xavierlib.XavierError;
 import com.blacksharktech.xavierlib.XavierSDK;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(v -> {
             Intent xavierActivity = new Intent(MainActivity.this, XavierActivity.class);
 
-            XavierSDK.getInstance().setAppKey("PUT IN YOUR LICENSE KEY HERE");
+            XavierSDK.getInstance().setAppKey("$2a$12$NxGfKYhw8TuhXGTLGnvwD.C9RN799n3WgEHlZ2XqTEYwb65zuubLe");
             XavierSDK.getInstance().setCustomization(customization);
 
             startActivityForResult(xavierActivity, XAVIER_RESULT);
@@ -59,9 +60,10 @@ public class MainActivity extends AppCompatActivity {
 
             } else if(resultCode == RESULT_CANCELED){
                 if(data != null) {
-                    String error = data.getStringExtra(XavierActivity.ERROR);
+                    XavierError error = (XavierError) data.getSerializableExtra(XavierActivity.ERROR);
+
                     if (error != null) {
-                        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getErrorMessage(error), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -84,4 +86,29 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private String getErrorMessage(XavierError error) {
+        switch (error) {
+            case CAMERA_DISABLED:
+                return getString(R.string.camErrorDisabled);
+            case CAMERA_DISCONNECTED:
+                return getString(R.string.camErrorDisconnected);
+            case CAMERA_IN_USE:
+                return getString(R.string.camErrorInUse);
+            case CAMERA_MAX_IN_USE:
+                return getString(R.string.camErrorMaxInUse);
+            case CAMERA_GENERIC:
+                return getString(R.string.camErrorDefault);
+            case CAMERA_ORIENTATION:
+                return getString(R.string.camErrorOrientation);
+            case LICENSE_INVALID:
+                return getString(R.string.invalidLicense);
+            case PERMISSIONS:
+                return getString(R.string.permissionsError);
+            case PACKAGE_NAME_NOT_FOUND:
+                return getString(R.string.packageNotFound);
+            default:
+                return getString(R.string.defaultError);
+      }
+  }
 }

@@ -1,7 +1,7 @@
-# Adding Xavier to your App
+# Adding the Xavier Library to your Application
 
 1. Create a directory `libs` inside your project's `app` folder
-2. Download the [library AAR file](https://github.com/BlackSharkTech/xavier-demo-android/blob/master/xavier-demo/app/libs/xavierlib.aar)
+2. Download the [library AAR file](../downloads/v2.1.0/xavierlib-2.1.0-release.aar)
 3. Put the AAR file into the `libs` directory you just created
 4. In your `build.gradle` at the root of your project, add the following:
 
@@ -22,7 +22,7 @@ allprojects {
         ...
         
         // Xavier library
-        implementation(name:'xavierlib', ext:'aar')
+        implementation(name:'xavierlib-2.1.0-release', ext:'aar')
 
         // Xavier dependencies
         implementation 'com.rmtheis:tess-two:9.0.0'
@@ -31,3 +31,5 @@ allprojects {
         implementation 'com.google.code.gson:gson:2.8.5'
     }
 ```
+
+You can switch between different versions of the library by changing the name's value in the dependencies implementation line for "Xavier library". Be sure to update this when you download a new version!
