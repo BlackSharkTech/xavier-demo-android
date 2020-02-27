@@ -17,7 +17,7 @@ For **iOS** developers, see the [Xavier Demo iOS app](https://github.com/BlackSh
 |---------|----------|------|
 | v2.0 | [xavierlib.aar](./downloads/v2.0/xavierlib.aar) | 2018/11/07 |
 | [v2.1.0](./documentation/release-notes.md#210) | [xavierlib-2.1.0-release.aar](./downloads/v2.1.0/xavierlib-2.1.0-release.aar) | 2019/09/27|
-| [v2.1.0](./documentation/release-notes.md#210) | [xavierlib-2.1.1-release.aar](./downloads/v2.1.1/xavierlib-2.1.1-release.aar) | 2020/01/08|
+| [v2.1.1](./documentation/release-notes.md#210) | [xavierlib-2.1.1-release.aar](./downloads/v2.1.1/xavierlib-2.1.1-release.aar) | 2020/01/08|
 
 #### Dependencies
 > See [app/build.gradle](./xavier-demo/app/build.gradle) for more information.
