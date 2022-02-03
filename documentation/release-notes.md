@@ -12,3 +12,6 @@
 
 ## 2.1.2
 * Updated library to use AndroidX, brings compatibility with SDK 30
+
+## 2.1.3
+* Brings compatibility with SDK 32
