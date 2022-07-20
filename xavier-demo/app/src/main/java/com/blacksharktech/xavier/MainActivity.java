@@ -40,6 +40,10 @@ import com.blacksharktech.xavierlib.XavierSDK;
 
 import java.util.Collections;
 
+/**
+ * This demo application showcases how to set up Xavier's BaseCameraManager
+ * to use an external camera set up in this application.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final int XAVIER_RESULT = 1234;
@@ -57,10 +61,16 @@ public class MainActivity extends AppCompatActivity {
     private CaptureRequest captureRequest;
     public static final String ERROR = "ERROR";
 
+    /*
+        To simulate using an external camera, the phone's camera will be used
+        but it is being set up in this application as opposed to the default
+        behavior of the camera being set up in the Xavier library
+     */
     private static final String[] ALL_PERMISSIONS = new String[]{
             Manifest.permission.CAMERA
     };
 
+    // This is only needed when using the phone's camera to simulate an external camera
     private static final int PERMISSIONS_REQUEST_CAMERA = 1;
 
     @Override
@@ -72,8 +82,23 @@ public class MainActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, ALL_PERMISSIONS, PERMISSIONS_REQUEST_CAMERA);
 
         initCustomXavierUI();
+
+        /*
+            cameraManager is needed to set up the phone's camera in setUpCamera.
+            Won't be needed if using an external USB camera.
+         */
         cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+
+        /*
+            BaseCameraManager needs to be created in order for the Xavier library
+            to properly interact with the external camera.
+         */
         baseCameraManager = new BaseCameraManager(new CameraInterface() {
+            /**
+             * This method should call other methods to open a background
+             * thread for the camera, set up the camera, and open the
+             * camera.
+             */
             @Override
             public void openCamera() {
                 openBackgroundThread();
@@ -81,17 +106,34 @@ public class MainActivity extends AppCompatActivity {
                 openCameraHelper();
             }
 
+            /**
+             * This method should call other methods to close the camera
+             * and the background thread.
+             */
             @Override
             public void closeCamera() {
                 closeCameraHelper();
                 closeBackgroundThread();
             }
 
+            /**
+             * This method should call a method to set up the
+             * camera's surface texture. This is used to display
+             * the camera preview when using Xavier.
+             * @param surface The SurfaceTexture from the camera
+             */
             @Override
             public void setSurface(SurfaceTexture surface) {
                 setSurfaceHelper(surface);
             }
 
+            /**
+             * This method returns a resolution for the camera preview
+             * which is based on the camera's characteristics. In this example,
+             * previewSize is set using chooseOptimalSize, which is called
+             * in setUpCamera
+             * @return Optimal preview size
+             */
             @Override
             public Size getOutputSize() {
                 return previewSize;
@@ -104,12 +146,30 @@ public class MainActivity extends AppCompatActivity {
 
             XavierSDK.getInstance().setAppKey("$2a$12$NxGfKYhw8TuhXGTLGnvwD.C9RN799n3WgEHlZ2XqTEYwb65zuubLe");
             XavierSDK.getInstance().setCustomization(customization);
+
+            /*
+                Need to set the base camera manager created for the external camera
+                back to the Xavier library
+             */
             XavierSDK.getInstance().setBaseCameraManager(baseCameraManager);
+
+            /*
+                If the external camera should be the only camera that is used,
+                set the externalCameraOnly boolean to true in the Xavier library.
+                If this is not set, or set to true, the default is false. In this case,
+                if the baseCameraManager passed back to Xavier is null, the library
+                will use the phone's internal camera.
+             */
+            XavierSDK.getInstance().setExternalCameraOnly(false);
 
             startActivityForResult(xavierActivity, XAVIER_RESULT);
         });
     }
 
+    /**
+     * Method that is called in baseCameraManager's closeCamera method to
+     * close the background thread.
+     */
     private void closeBackgroundThread() {
         if (backgroundHandler != null) {
             backgroundThread.quitSafely();
@@ -118,22 +178,33 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method this is called in baseCameraManager's openCamera method to
+     * open the background thread.
+     */
     private void openBackgroundThread() {
         backgroundThread = new HandlerThread("camera_background_thread");
         backgroundThread.start();
         backgroundHandler = new Handler(backgroundThread.getLooper());
     }
 
+    /**
+     * State callback for the camera. There are methods that need to be
+     * called when the camera is opened, disconnected, or has an error
+     * that will work with the listener in BaseCameraManager.
+     */
     private CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(@NonNull CameraDevice cameraDevice) {
             MainActivity.this.cameraDevice = cameraDevice;
+            // Need to tell the listener that the camera is opened using isOpened
             baseCameraManager.isOpened();
         }
 
         @Override
         public void onDisconnected(CameraDevice cameraDevice) {
             cameraDevice.close();
+            // Need to tell the listener that the camera disconnected using isDisconnected
             baseCameraManager.isDisconnected();
             MainActivity.this.cameraDevice = null;
         }
@@ -141,11 +212,21 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onError(CameraDevice cameraDevice, int error) {
             cameraDevice.close();
+            // Need to tell the listener that the camera is has an error using hasError
             baseCameraManager.hasError();
             MainActivity.this.cameraDevice = null;
         }
     };
 
+    /**
+     * Helper method to set up the SurfaceTexture from the camera's capture
+     * for the preview that will displayed on the screen.
+     *
+     * Since this example is using the phone's camera to simulate, the
+     * code uses methods from the Camera2 API. This will be different
+     * based on the API of the external camera being used.
+     * @param previewSurface SurfaceTexture for the preview
+     */
     private void setSurfaceHelper(SurfaceTexture previewSurface) {
         try {
             captureRequestBuilder = MainActivity.this.cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
@@ -181,11 +262,18 @@ public class MainActivity extends AppCompatActivity {
                     }, backgroundHandler);
         } catch (CameraAccessException e) {
             e.printStackTrace();
+            // Calls baseCameraManager's listener to retrieve the error message
             baseCameraManager.hasError(e.getMessage());
         }
     }
 
-    // Initializes the camera
+    /**
+     * Initializes the camera and sets the preview size.
+     *
+     * Since this example uses the phone's camera, the code uses methods
+     * from the Camera2 API. This will be different based on the API of
+     * the external camera being used.
+     */
     private void setUpCamera() {
         try {
             for (String cameraId : cameraManager.getCameraIdList()) {
@@ -197,6 +285,8 @@ public class MainActivity extends AppCompatActivity {
                             CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
 
                     Size[] sizes = streamConfigurationMap.getOutputSizes(SurfaceTexture.class);
+
+                    // Preview size is being initialized based on the camera's characteristics
                     previewSize = chooseOptimalSize(sizes);
 
                     this.cameraId = cameraId;
@@ -207,10 +297,17 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (CameraAccessException e) {
             e.printStackTrace();
+            // Calls baseCameraManager's listener to retrieve the error message
             baseCameraManager.hasError(e.getMessage());
         }
     }
 
+    /**
+     * This method should call the external camera's API equivalent of opening the camera.
+     *
+     * Since this example is using the phone's internal camera to simulate using an external
+     * camera, it is checking that the permission to use the camera has been granted.
+     */
     private void openCameraHelper() {
         try {
             if (ContextCompat.checkSelfPermission(this,
@@ -229,10 +326,15 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (CameraAccessException e) {
             e.printStackTrace();
+            // Calls baseCameraManager's listener to retrieve the error message
             baseCameraManager.hasError(e.getMessage());
         }
     }
 
+    /**
+     * This method should call the external camera's API equivalent of closing the camera
+     * and its capture session.
+     */
     private void closeCameraHelper() {
 
         if (cameraCaptureSession != null) {
@@ -330,6 +432,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Helper method that determines an optimal preview size.
+     * @param outputSizes Resolutions the camera can operate with
+     * @return Optimal resolution for the screen preview
+     */
     private Size chooseOptimalSize(Size[] outputSizes) {
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
