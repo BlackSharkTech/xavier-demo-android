@@ -373,10 +373,15 @@ public class MainActivity extends AppCompatActivity {
                 if(data != null) {
                     Log.d("Xavier", "RESULT_CANCELED Data: " + data.getSerializableExtra(XavierActivity.ERROR));
                     XavierError error = (XavierError) data.getSerializableExtra(XavierActivity.ERROR);
+                    /*
+                        errorMessage is an optional message that can be passed in when
+                        using baseCameraManager.hasError in the try-catch blocks.
+                     */
                     String errorMessage = (String) data.getSerializableExtra(XavierActivity.ERROR_MESSAGE);
 
                     if (error != null) {
                         Toast.makeText(this, getErrorMessage(error), Toast.LENGTH_SHORT).show();
+                        // If an error message was created for the error, log the message
                         if (errorMessage != null) {
                             Log.i("Xavier", errorMessage);
                         }
