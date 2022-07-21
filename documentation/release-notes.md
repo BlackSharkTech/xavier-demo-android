@@ -15,3 +15,6 @@
 
 ## 2.1.3
 * Brings compatibility with SDK 32
+
+## 2.1.4
+* Adds the ability to use an external camera

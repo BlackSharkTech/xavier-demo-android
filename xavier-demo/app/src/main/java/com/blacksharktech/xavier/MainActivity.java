@@ -3,7 +3,10 @@ package com.blacksharktech.xavier;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -60,10 +63,15 @@ public class MainActivity extends AppCompatActivity {
 
             } else if(resultCode == RESULT_CANCELED){
                 if(data != null) {
+                    Log.d("Xavier", "RESULT_CANCELED Data: " + data.getSerializableExtra(XavierActivity.ERROR));
                     XavierError error = (XavierError) data.getSerializableExtra(XavierActivity.ERROR);
+                    String errorMessage = (String) data.getSerializableExtra(XavierActivity.ERROR_MESSAGE);
 
                     if (error != null) {
                         Toast.makeText(this, getErrorMessage(error), Toast.LENGTH_SHORT).show();
+                        if (errorMessage != null) {
+                            Log.i("Xavier", errorMessage);
+                        }
                     }
                 }
             }
@@ -99,8 +107,12 @@ public class MainActivity extends AppCompatActivity {
                 return getString(R.string.camErrorMaxInUse);
             case CAMERA_GENERIC:
                 return getString(R.string.camErrorDefault);
-            case CAMERA_ORIENTATION:
-                return getString(R.string.camErrorOrientation);
+            case EXTERNAL_CAMERA_DISCONNECTED:
+                return getString(R.string.extCamErrorDisconnected);
+            case EXTERNAL_CAMERA_GENERIC:
+                return getString(R.string.extCamErrorDefault);
+            case EXTERNAL_CAMERA_NOT_CONNECTED:
+                return getString(R.string.extCamErrorNotConnected);
             case LICENSE_INVALID:
                 return getString(R.string.invalidLicense);
             case PERMISSIONS:
@@ -109,6 +121,6 @@ public class MainActivity extends AppCompatActivity {
                 return getString(R.string.packageNotFound);
             default:
                 return getString(R.string.defaultError);
-      }
-  }
+        }
+    }
 }

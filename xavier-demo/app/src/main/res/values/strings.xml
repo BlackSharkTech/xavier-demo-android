@@ -46,5 +46,9 @@
     <string name="camErrorMaxInUse">Camera error: too many camera instances open.</string>
     <string name="camErrorDefault">Error: check camera status.</string>
     <string name="camErrorOrientation">Too many orientation changes!</string>
-    <string name="packageNotFound">Package not found.</string>
+    <string name="packageNotFound">Package not found.</string> //Provide info about the package?
+    <string name="extCamErrorDisabled">External Camera Error: Camera is disabled</string>
+    <string name="extCamErrorDisconnected">External Camera Error: Camera has been disconnected</string>
+    <string name="extCamErrorDefault">External Camera Error: Check camera status</string>
+    <string name="extCamErrorNotConnected">External Camera Error: Camera could not be recognized</string>
 </resources>

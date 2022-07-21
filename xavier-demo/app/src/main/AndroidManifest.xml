@@ -3,6 +3,12 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.blacksharktech.xavier">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <application
             android:allowBackup="false"
             android:icon="@mipmap/ic_launcher_x"
@@ -12,7 +18,8 @@
             tools:ignore="GoogleAppIndexingWarning">
         <activity
                 android:name=".MainActivity"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
