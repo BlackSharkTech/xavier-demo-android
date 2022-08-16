@@ -235,6 +235,8 @@ I/Xavier: Ended scanner at Wed Sep 25 15:23:17 EDT 2019
 ## **Optional**: Using an External Camera with Xavier
 
 In most cases, you will be using the phone's camera so Xavier will manage the camera internally. However, if there is a special USB camera you would like to use, follow these steps. Otherwise, no additional steps are necessary - you can skip to [Further Exploration](#further-exploration).
+
+**Please Note:** When setting up the camera in your activity, you will need to set up a background thread using a HandlerThread approach. A complete example of using external camera with Xavier can be found in [external-camera-demo](https://github.com/BlackSharkTech/xavier-demo-android/blob/v2.1.4-External/xavier-demo/app/src/main/java/com/blacksharktech/xavier/MainActivity.java). 
 <br/><br/>
 ### **BaseCameraManager Overview**
 <br/>
@@ -410,7 +412,7 @@ At this point, you should have:
 2. Passed a BaseCameraManager to Xavier using the XavierSDK - [Step 2](#2-how-to-pass-a-basecameramanager-to-xavier)
 3. Updated your camera statecallback to notify Xavier of camera state changes using the BaseCameraManager methods - [Step 3](#3-how-to-indicate-camera-state-changes)
 
-If that is not the case, please review the steps in [Using An External Camera With Xavier](#optional-using-an-external-camera-with-xavier). 
+If that is not the case, please review the steps in [Using An External Camera With Xavier](#optional-using-an-external-camera-with-xavier). Example code is available at [external-camera-demo](https://github.com/BlackSharkTech/xavier-demo-android/blob/v2.1.4-External/xavier-demo/app/src/main/java/com/blacksharktech/xavier/MainActivity.java). 
 
 If you have followed all of the steps, you are ready to start the XavierActivity with your external camera attached. **Happy Scanning!** 
 
