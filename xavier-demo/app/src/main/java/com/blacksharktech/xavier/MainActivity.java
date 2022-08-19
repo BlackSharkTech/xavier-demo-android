@@ -67,7 +67,9 @@ public class MainActivity extends AppCompatActivity {
         behavior of the camera being set up in the Xavier library
      */
     private static final String[] ALL_PERMISSIONS = new String[]{
-            Manifest.permission.CAMERA
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
     // This is only needed when using the phone's camera to simulate an external camera
