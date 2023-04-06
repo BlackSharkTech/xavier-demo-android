@@ -18,3 +18,9 @@
 
 ## 2.1.4
 * Adds the ability to use an external camera
+
+## 2.1.5
+* Fixes OCR for MYS passports
+
+## 2.1.6
+* Registers scans
