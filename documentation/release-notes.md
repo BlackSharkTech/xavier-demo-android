@@ -18,3 +18,6 @@
 
 ## 2.1.4
 * Adds the ability to use an external camera
+
+## 2.1.5b
+* Updated MRZ parsing logic to handle more countries
