@@ -21,3 +21,6 @@
 
 ## 2.1.5b
 * Updated MRZ parsing logic to handle more countries
+
+## 2.1.6
+* Registers scans
