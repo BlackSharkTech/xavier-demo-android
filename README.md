@@ -1,4 +1,4 @@
-# Xavier 3.0.0 SDK & Demo Application - Android
+# Xavier 3.0.0 Beta SDK & Demo Application - Android
 This is the repository for the Xavier Demo app for Android. You can use the code here as an example for implementing the Xavier Framework into your own app.
 See the documentation links below for more information.
 
