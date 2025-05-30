@@ -1,18 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 32
+    namespace "com.blacksharktech.xavier"
+    compileSdkVersion 35
     defaultConfig {
         applicationId "com.blacksharktech.xavier"
         minSdkVersion 28
-        targetSdkVersion 32
+        targetSdkVersion 35
         versionCode 22
         versionName "2.1.4"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     buildTypes {
         release {
@@ -34,7 +35,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
     // Xavier
-    implementation(name:'xavierlib-2.1.6-release', ext:'aar')
+    implementation(name:'xavierlib-3.0.0b-release', ext:'aar')
 
     // Xavier dependencies
     implementation 'com.rmtheis:tess-two:9.0.0'
