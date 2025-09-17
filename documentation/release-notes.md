@@ -24,3 +24,6 @@
 
 ## 2.1.6
 * Registers scans
+
+## 3.0.0b
+* Brings compatibility with SDK 35
